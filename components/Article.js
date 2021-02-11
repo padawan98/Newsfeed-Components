@@ -86,6 +86,37 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  //part 2
+  {
+    title: 'Pokemon theme song',
+    date: '1999',
+    firstParagraph: `I want to be the very best,
+                    Like no one ever was.
+                    To catch them is my real test,
+                    To train them is my cause!
+                    (I will travel across the land,
+                    Searching far and wide.
+                    Each Pokemon to understand
+                    The power that's inside!)`,
+
+    secondParagraph: `Pokemon!
+                      Gotta catch em' all!
+                      It's you and me,
+                      I know it's my destiny!
+                      Pokemon!
+                      Oh, you're my best friend,
+                      In a world we must defend!
+                      Pokemon!
+                      Gotta catch em' all!`,
+
+    thirdParagraph: `(A heart so true,
+                     Our courage will pull us through!)
+                     You teach me and I'll teach you,
+                     Po-ke-mon!
+                     Gotta catch em' all!
+                     Gotta catch em' all!`
   }
 ];
 
@@ -114,3 +145,59 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+ 
+//Step 1:
+function articleMaker (article)
+{
+  //div class
+  let newDiv = document.createElement('div');
+  newDiv.classList.add('article');
+  
+  //h2
+  let articleTitle = document.createElement('h2');
+  articleTitle.textContent = article[title];
+  newDiv.appendChild(articleTitle);
+  
+  //.date
+  let date = document.createElement('p'); //create a paragraph
+  date.classList.add('date'); //adding class name
+  date.textContent = article[date]; //putting text inside of the p class date
+  newDiv.appendChild(date); //appending date to newDiv
+
+  //Paragraph 1
+  let p1 = document.createElement('p'); //create a paragraph
+  p1.classList.add('firstParagraph'); //adding class name
+  p1.textContent = article[firstParagraph]; //putting text inside of the p class 
+  newDiv.appendChild(p1); //appending date to newDiv
+
+  //Paragraph 2
+  let p2 = document.createElement('p'); //create a paragraph
+  p2.classList.add('secondParagraph'); //adding class name
+  p2.textContent = article[secondParagraph]; //putting text inside of the p class 
+  newDiv.appendChild(p2); //appending date to newDiv
+
+  //Paragraph 3
+  let p3 = document.createElement('p'); //create a paragraph
+  p3.classList.add('thirdParagraph'); //adding class name
+  p3.textContent = article[thirdParagraph]; //putting text inside of the p class 
+  newDiv.appendChild(p3); //appending date to newDiv
+
+  //Span
+  let span = document.createElement('span'); //create a paragraph
+  span.classList.add('expandButton'); //adding class name
+  span.textContent = '+'; //putting text inside of the p class 
+  newDiv.appendChild(span); //appending date to newDiv
+
+  //button listener
+  button.addEventListener("click", function() {
+    articleDiv.classList.toggle('article-open');
+  });
+
+  return newDiv;
+}
+const body = document.querySelector('body');
+for(let i = 0; i < data.length; i++)
+{
+  let thisDiv = articleMaker(data[i]);
+  body.appendChild(thisDiv);
+}
